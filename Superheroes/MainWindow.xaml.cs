@@ -21,11 +21,23 @@ namespace Superheroes
     /// </summary>
     public partial class MainWindow : Window
     {
+        Superheroe heroe;
         public MainWindow()
         {
             InitializeComponent();
-            Superheroe dd = GetSample();
+            heroe = Superheroe.GetSample();
+            TextBlockNombre.DataContext = heroe;
+            TextBlockEnemigo.DataContext = heroe;
+            TextBlockVengador.DataContext = heroe;
+            ImageSuperheroe.DataContext = heroe;
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            TextBoxNombre.DataContext = heroe;
+            TextBoxEnemigo.DataContext = heroe;
+            TextBoxFoto.DataContext = heroe;
         }
     }
 }

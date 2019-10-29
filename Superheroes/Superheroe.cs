@@ -1,4 +1,9 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Superheroes
 {
@@ -14,7 +19,7 @@ namespace Superheroes
             get { return this.nombre; }
             set
             {
-                if(this.nombre != value)
+                if (this.nombre != value)
                 {
                     this.nombre = value;
                     this.NotifyPropertyChanged("Nombre");
@@ -81,5 +86,4 @@ namespace Superheroes
             return heroe;
         }
     }
-
 }
