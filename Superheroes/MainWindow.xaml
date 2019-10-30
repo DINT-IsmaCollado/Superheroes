@@ -9,6 +9,7 @@
     <Window.Resources>
         <local:Superheroe x:Key="daredevil"></local:Superheroe>
         <local:Configuracion x:Key="configuracion"></local:Configuracion>
+        <local:VengadorBooleanConverter x:Key="conversor"></local:VengadorBooleanConverter>
     </Window.Resources>
     <DockPanel DataContext="{StaticResource configuracion}" Background="{Binding Path=Fondo}">
         <Grid DockPanel.Dock="Top">
@@ -32,19 +33,19 @@
 
             <Image x:Name="ImageSuperheroe" Grid.Column="0" Grid.Row="0" Grid.RowSpan="8" Source="{Binding Path=Foto}"/>
             <TextBlock Grid.Column="1" Grid.Row="0" Text="Nombre" Margin="5,5,5,0"></TextBlock>
-            <TextBox x:Name="TextBoxNombre" Grid.Column="1" Grid.Row="1" Margin="5,0,5,5" Height="17" Text="{Binding Path=Nombre}"></TextBox>
+            <TextBox x:Name="TextBoxNombre" Grid.Column="1" Grid.Row="1" Margin="5,0,5,5" Height="17" Text="{Binding ElementName=TextBlockNombre, Path=Text}"></TextBox>
             <TextBlock Grid.Column="1" Grid.Row="2" Text="Enemigo" Margin="5,5,5,0"></TextBlock>
-            <TextBox x:Name="TextBoxEnemigo" Grid.Column="1" Grid.Row="3" Margin="5,0" Height="17" Text="{Binding Path=Enemigo}"></TextBox>
+            <TextBox x:Name="TextBoxEnemigo" Grid.Column="1" Grid.Row="3" Margin="5,0" Height="17" Text="{Binding ElementName=TextBlockEnemigo, Path=Text}"></TextBox>
             <TextBlock Grid.Column="1" Grid.Row="4" Text="Foto" Margin="5,5,5,0"></TextBlock>
             <TextBox x:Name="TextBoxFoto" Grid.Column="1" Grid.Row="5" Margin="5,0,5,5" Height="17" Text="{Binding Path=Foto}"></TextBox>
-            <CheckBox Content="¿Vengador?" Grid.Column="1" Grid.Row="6" Margin="5,15,0,0"></CheckBox>
+            <CheckBox Content="¿Vengador?" Grid.Column="1" Grid.Row="6" Margin="5,15,0,0" Checked="{Binding ElementName=TextBlockVengador, Path=Text, Converter={StaticResource conversor}}"></CheckBox>
             <Button Content="Editar" Grid.Column="1" Grid.Row="7" Width="75" HorizontalAlignment="Left" Margin="5,15,0,0" Click="Button_Click"></Button>
             <TextBlock Text="Nombre: " Grid.Column="0" Grid.Row="8"/>
             <TextBlock x:Name="TextBlockNombre" Text="{Binding Path=Nombre}" Grid.Column="1" Grid.Row="8"/>
             <TextBlock Text="Enemigo: " Grid.Column="0" Grid.Row="9"/>
             <TextBlock x:Name="TextBlockEnemigo" Text="{Binding Path=Enemigo}" Grid.Column="1" Grid.Row="9"/>
             <TextBlock Text="Vengador: " Grid.Column="0" Grid.Row="10"/>
-            <TextBlock x:Name="TextBlockVengador" Text="{Binding Path=Vengador}" Grid.Column="1" Grid.Row="10"/>
+            <TextBlock x:Name="TextBlockVengador" Text="{Binding Path=Vengador, Path=cheked}" Grid.Column="1" Grid.Row="10"/>
         </Grid>
     </DockPanel>
 </Window>
